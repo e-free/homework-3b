@@ -2,10 +2,13 @@ function Listing (props){
   let item = [];
   let levelGrade = "";
   let costWithCurrency ="";
-  
+  let titleItem = "";
   if (props.item) { item = props.item };
 
   let items = item.map(function(elem, index){
+   titleItem = elem.title;
+  if (titleItem) {titleItem = (titleItem.length > 50) ? (titleItem.slice(0, 50) + "...") : titleItem;}
+
    if (elem.currency_code === "USD"){
     costWithCurrency = "$"+ String(elem.price); 
    } 
@@ -34,7 +37,7 @@ function Listing (props){
         </a>
       </div>
       <div className ="item-details">
-        <p className ="item-title">{elem.title}</p>
+        <p className ="item-title">{titleItem}</p>
         <p className ="item-price">{costWithCurrency}</p>
         <p className ={`item-quantity ${levelGrade}`}>{elem.quantity} left</p>
       </div>
