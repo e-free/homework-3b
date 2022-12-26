@@ -30,7 +30,7 @@ function Listing (props){
     levelGrade = "level-high";
   }
   return <>      
-    <div id = {elem.listing_id} className ="item">
+    <div id = {elem.listing_id} className ="item" key={`product-${index}`}>
       <div className ="item-image">
         <a href={elem.url}>
           <img src={(elem.MainImage && elem.MainImage.url_570xN) ? elem.MainImage.url_570xN : 'no image'} alt ={elem.title}  />
